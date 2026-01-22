@@ -23,11 +23,19 @@
             margin: 20px auto;
             background: white;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            padding: 5mm 8mm;
+            padding: 0; 
             position: relative;
             display: flex;
             flex-direction: column;
             overflow: hidden;
+        }
+
+        /* Content Container with Padding */
+        .page-content {
+            padding: 0 8mm 5mm 8mm; /* Side and Bottom padding */
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Watermark */
@@ -44,14 +52,24 @@
         }
 
         /* Header Styling */
-        .header-border {
-            border-bottom: 12px solid #f97316;
-            padding-bottom: 4px;
-            margin-bottom: 4px;
-            min-height: 130px; /* Slightly reduced to save vertical space */
+        .header-section {
+            width: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            padding-top: 5mm;
+        }
+
+        .header-orange-bar {
+            background-color: #f97316;
+            color: white;
+            padding: 4px 0;
+            margin-top: 5px;
+            margin-bottom: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            -webkit-print-color-adjust: exact; 
+            print-color-adjust: exact;
         }
 
         .hospital-name {
@@ -59,7 +77,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             line-height: 1;
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
         }
 
@@ -93,7 +111,7 @@
             color: #000000;
             display: flex;
             flex-direction: column;
-            gap: 2px; /* Tighter gap */
+            gap: 4px; 
         }
 
         .main-rx {
@@ -119,10 +137,10 @@
             font-weight: 900;
             color: #1e3a8a;
             border-bottom: 2px solid #f97316;
-            margin-bottom: 1px;
+            margin-bottom: 2px;
             padding-bottom: 0px;
-            font-size: 0.85rem;
-            margin-top: 3px; /* Reduced top margin to prevent cut off */
+            font-size: 14px;
+            margin-top: 6px;
             text-transform: uppercase;
         }
         .sidebar-header:first-child { margin-top: 0; }
@@ -141,11 +159,11 @@
         .emergency-box {
             background-color: #ffedd5;
             color: #c2410c;
-            padding: 1px 6px;
+            padding: 2px 8px;
             border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            border: 1px solid #fdba74;
+            font-weight: 900;
+            font-size: 1.1rem;
+            border: 2px solid #f97316;
         }
 
         /* Utility */
@@ -162,72 +180,86 @@
         /* Custom Checkbox */
         .print-checkbox {
             display: inline-block;
-            width: 9px;
-            height: 9px;
+            width: 11px;
+            height: 11px;
             border: 1px solid #000000;
             margin-right: 2px;
             vertical-align: middle;
         }
         
-        /* Dose & Duration Options */
-        .dose-option {
-            display: inline-flex;
-            width: 13px;
-            height: 13px;
-            border: 1px solid #000000;
-            border-radius: 50%;
-            justify-content: center;
-            align-items: center;
-            font-size: 7px;
-            margin-right: 1px;
-            color: #000000;
+        /* New Header Box Styles for Rx */
+        .rx-header-label {
+            display: inline-block;
+            width: 10px; /* Reduced width for compactness */
+            text-align: center;
+            font-size: 8px;
             font-weight: bold;
-        }
-        .duration-option {
-            display: inline-flex;
-            width: 14px;
-            height: 14px;
-            border: 1px solid #000000;
-            border-radius: 3px;
-            justify-content: center;
-            align-items: center;
-            font-size: 7px;
-            margin-right: 1px;
-            color: #000000;
-            font-weight: bold;
-        }
-        .dose-group { display: flex; align-items: center; }
-
-        /* Rx Table Lines */
-        .rx-table-header {
-            display: flex;
-            background-color: #f3f4f6;
-            padding: 3px 8px;
-            border: 1px solid #000000;
-            border-bottom: none;
-            border-radius: 4px 4px 0 0;
-            font-size: 10px;
-            font-weight: 900;
-            color: #000000;
-            text-transform: uppercase;
         }
         
-        .rx-box {
-            border: 1px solid #000000;
-            border-radius: 0 0 4px 4px;
+        /* Compact Tick Box - Updated Size */
+        .tick-box {
+            display: inline-block;
+            width: 9px; /* Reduced size */
+            height: 9px; /* Reduced size */
+            border: 1px solid #9ca3af;
+            background-color: white;
+            margin: 0;
         }
 
-        .rx-row {
-            display: flex;
+        /* Rx Table Lines */
+        .med-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .med-table th {
+            background-color: #f3f4f6;
+            border: 1px solid #000;
+            padding: 2px;
+            font-size: 9px; /* Smaller font */
+            font-weight: 900;
+            text-transform: uppercase;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            vertical-align: middle;
+        }
+        .med-table td {
             border-bottom: 1px solid #e5e7eb;
-            padding: 5px 4px;
-            align-items: center;
+            border-left: 1px solid #000;
+            border-right: 1px solid #000;
+            padding: 4px 2px;
+            vertical-align: bottom; /* Changed to bottom to align number with writing line */
         }
-        .rx-row:last-child { border-bottom: none; }
+        /* First column styling - No border bottom */
+        .med-table td:first-child {
+            /* border-bottom: none !important; */
+            border-right: 1px solid #000;
+            vertical-align: top; /* Align content to top for rowspan */
+            padding: 4px;
+        }
+        
+        .med-table tr:last-child td {
+            border-bottom: 1px solid #000;
+        }
 
-        .rx-col-1 { width: 60%; padding-right: 5px; display: flex; align-items: end; font-weight: 600; font-size: 0.9rem; color: #000000;} 
-        .rx-col-2 { width: 22%; padding-right: 2px; display: flex; justify-content: center;} 
-        .rx-col-3 { width: 18%; display: flex; align-items: center; justify-content: flex-end;} 
+        /* Number styling */
+        .med-number {
+            font-size: 10px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Consultant Table */
+        .consultant-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+        }
+        .consultant-table td {
+            padding: 2px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+        .doc-name { font-weight: 800; color: black; }
+        .doc-spec { font-weight: 500; color: #333; text-align: right; }
 
         /* Print Specifics */
         @media print {
@@ -237,19 +269,20 @@
                 margin: 0; 
                 width: 210mm; 
                 height: 296mm; 
-                padding: 5mm 8mm;
+                padding: 0;
                 border: none;
                 page-break-after: always;
                 overflow: hidden;
             }
+            .header-orange-bar { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; background-color: #f97316 !important; color: white !important; }
+            .med-table th { background-color: #f3f4f6 !important; }
             .no-print { display: none !important; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
             [contenteditable]:hover { background-color: transparent; outline: none; }
             .rx-row { border-bottom: 1px solid #e5e7eb; }
             .dose-option, .duration-option { border-color: #000000; color: #000000; }
-            .rx-table-header { background-color: #f3f4f6 !important; border-color: #000000; }
             .rx-box { border-color: #000000; }
-            .emergency-box { border: 1px solid #f97316; }
+            .emergency-box { border: 2px solid #f97316; background-color: #ffedd5 !important;}
             .sidebar { border-right: 2px solid #000000; }
         }
     </style>
@@ -268,7 +301,6 @@
         
         <!-- Watermark -->
         <div class="watermark flex justify-center items-center">
-             <!-- SVG Watermark -->
              <svg width="400" height="400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.05;">
                 <path d="M50 20V80M20 50H80" stroke="#000" stroke-width="15" stroke-linecap="round"/>
                 <path d="M40 50 L45 35 L55 65 L60 50" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -276,301 +308,410 @@
         </div>
 
         <!-- 1. Header -->
-        <header class="header-border">
-            <div class="flex justify-between items-center h-full">
+        <header class="header-section">
+            <div class="flex justify-between items-center px-6">
                 <div class="w-full text-center">
-                    <div class="flex justify-center items-center gap-5 mb-1">
+                    <div class="flex justify-center items-center gap-4 mb-1">
                         <!-- Custom Professional SVG Logo -->
-                        <div class="w-28 h-28 flex-shrink-0">
+                        <div class="w-36 h-36 flex-shrink-0">
                             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M35 15 H65 V35 H85 V65 H65 V85 H35 V65 H15 V35 H35 V15Z" fill="#1e3a8a" />
                                 <path d="M25 50 H35 L42 25 L58 75 L65 50 H75" stroke="#f97316" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle cx="50" cy="50" r="48" stroke="#1e3a8a" stroke-width="2"/>
                             </svg>
                         </div>
-                        <div class="text-left">
+                        <div class="text-left flex flex-col justify-center">
                             <h1 class="font-bold hospital-name" contenteditable="true">VIVAN JANSEVA HOSPITAL</h1>
-                            <p class="text-lg text-black font-extrabold tracking-wide" contenteditable="true">MULTISPECIALITY CARE</p>
-                            <p class="text-sm text-orange-600 font-bold italic" contenteditable="true">Your Health, Our Priority</p>
+                            <p class="text-xl text-black font-extrabold tracking-wide uppercase mt-1" contenteditable="true">MULTISPECIALITY CARE</p>
+                            <p class="text-sm text-orange-600 font-bold italic tracking-wide" contenteditable="true">Your Health, Our Priority</p>
                         </div>
                     </div>
-                    <div class="text-xs text-black font-bold flex justify-center gap-x-6 gap-y-0 mt-1">
+                    <div class="text-xs text-black font-bold flex justify-center gap-x-6 gap-y-0 mt-2">
                         <p><i class="fas fa-map-marker-alt text-orange-600"></i> <span contenteditable="true">Railway Road, Ganaur, Sonipat, 131101</span></p>
-                        <!-- Editable Phone Number -->
                         <p><i class="fas fa-phone-alt text-orange-600"></i> <span contenteditable="true">+91 90685 72275</span></p>
                     </div>
-                    <p class="text-[10px] text-black mt-0.5 font-semibold"><i class="fas fa-envelope text-orange-600"></i> <span contenteditable="true">vivanjansevahospital@gmail.com</span></p>
                 </div>
+            </div>
+            
+            <!-- Orange Bar with Email -->
+            <div class="header-orange-bar">
+                <i class="fas fa-envelope mr-2"></i> <span contenteditable="true">vivanjansevahospital@gmail.com</span>
             </div>
         </header>
 
-        <!-- 2. Patient Details -->
-        <section class="bg-gray-50 px-2 py-1.5 rounded mb-2 border border-black">
-            <div class="grid grid-cols-12 gap-x-3 gap-y-1 text-xs items-end text-black font-bold">
-                <div class="col-span-6 flex items-end">
-                    <span class="whitespace-nowrap mr-2 w-10">Name:</span>
-                    <div class="dotted-line w-full" contenteditable="true"></div>
+        <div class="page-content">
+            <!-- 2. Patient Details -->
+            <section class="bg-gray-50 px-2 py-1.5 rounded mb-2 border border-black">
+                <div class="grid grid-cols-12 gap-x-3 gap-y-1 text-xs items-end text-black font-bold">
+                    <div class="col-span-6 flex items-end">
+                        <span class="whitespace-nowrap mr-2 w-10">Name:</span>
+                        <div class="dotted-line w-full" contenteditable="true"></div>
+                    </div>
+                    <div class="col-span-3 flex items-end">
+                        <span class="whitespace-nowrap mr-2">Age/Sex:</span>
+                        <div class="dotted-line w-full" contenteditable="true"></div>
+                    </div>
+                    <div class="col-span-3 flex items-end">
+                        <span class="whitespace-nowrap mr-2">Date:</span>
+                        <div class="dotted-line w-full" contenteditable="true"></div>
+                    </div>
+                    
+                    <div class="col-span-8 flex items-end">
+                        <span class="whitespace-nowrap mr-2 w-10">Address:</span>
+                        <div class="dotted-line w-full" contenteditable="true"></div>
+                    </div>
+                    <div class="col-span-4 flex items-end">
+                        <span class="whitespace-nowrap mr-2">UHID:</span>
+                        <div class="dotted-line w-full" contenteditable="true"></div>
+                    </div>
                 </div>
-                <div class="col-span-3 flex items-end">
-                    <span class="whitespace-nowrap mr-2">Age/Sex:</span>
-                    <div class="dotted-line w-full" contenteditable="true"></div>
-                </div>
-                <div class="col-span-3 flex items-end">
-                    <span class="whitespace-nowrap mr-2">Date:</span>
-                    <div class="dotted-line w-full" contenteditable="true"></div>
-                </div>
+            </section>
+
+            <!-- 3. Main Content Grid -->
+            <div class="content-grid">
                 
-                <div class="col-span-8 flex items-end">
-                    <span class="whitespace-nowrap mr-2 w-10">Address:</span>
-                    <div class="dotted-line w-full" contenteditable="true"></div>
+                <!-- Left Sidebar -->
+                <div class="sidebar">
+                    
+                    <!-- General Exam (O/E) -->
+                    <div>
+                        <div class="sidebar-header">GEN. EXAM (O/E)</div>
+                        <div class="grid grid-cols-2 gap-1 text-[11px] text-black font-bold leading-tight">
+                            <div class="flex items-center"><span class="print-checkbox mr-1"></span> Pallor</div>
+                            <div class="flex items-center"><span class="print-checkbox mr-1"></span> Icterus</div>
+                            <div class="flex items-center"><span class="print-checkbox mr-1"></span> Cyanosis</div>
+                            <div class="flex items-center"><span class="print-checkbox mr-1"></span> Clubbing</div>
+                            <div class="flex items-center"><span class="print-checkbox mr-1"></span> Edema</div>
+                            <div class="flex items-center"><span class="print-checkbox mr-1"></span> Dehydrn.</div>
+                            <div class="flex items-center"><span class="print-checkbox mr-1"></span> Throat</div>
+                            <div class="flex items-center"><span class="print-checkbox mr-1"></span> Teeth</div>
+                            <div class="flex items-center"><span class="print-checkbox mr-1"></span> Neck</div>
+                            <div class="flex items-center"><span class="print-checkbox mr-1"></span> Eyes</div>
+                        </div>
+                    </div>
+
+                    <!-- Systemic Exam (S/E) -->
+                    <div>
+                        <div class="sidebar-header">SYS. EXAM (S/E)</div>
+                        <div class="grid grid-cols-2 gap-x-1 text-[12px] text-black font-bold leading-tight">
+                            <div class="space-y-1">
+                                <div class="flex justify-between items-end"><span>Chest:</span> <span class="border-b border-black w-6" contenteditable="true"></span></div>
+                                <div class="flex justify-between items-end"><span>CVS:</span> <span class="border-b border-black w-6" contenteditable="true"></span></div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="flex justify-between items-end"><span>P/A:</span> <span class="border-b border-black w-6" contenteditable="true"></span></div>
+                                <div class="flex justify-between items-end"><span>CNS:</span> <span class="border-b border-black w-6" contenteditable="true"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- History -->
+                    <div>
+                        <div class="sidebar-header">HISTORY</div>
+                        <div class="space-y-1">
+                            <div class="text-[11px] text-black font-bold">Past / Surgical / Family:</div>
+                            <div class="h-4 w-full border-b border-black" contenteditable="true"></div>
+                            <div class="text-[11px] text-black font-bold mt-1">Personal (Smk/Alc):</div>
+                            <div class="h-4 w-full border-b border-black" contenteditable="true"></div>
+                        </div>
+                    </div>
+
+                    <!-- Investigations -->
+                    <div>
+                        <div class="sidebar-header">INVESTIGATIONS</div>
+                        <div class="text-[10px] text-black font-bold flex flex-col gap-1 pl-0.5 leading-tight">
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>CBC</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Hb</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>ESR</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Platelet</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>RBS</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>HbA1c</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>B.Sugar(F/PP)</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Urea</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Creatinine</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Uric Acid</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>SGOT</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>SGPT</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Bilirubin</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Lipid Profile</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Alk. Phos</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Thyroid Profile</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>TSH</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Ca</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Na</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>K</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Vit B12/D3</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>HIV</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>HCV</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>HBsAg</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Typhi Dot</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Malaria</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Dengue NS1</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Urine R/M</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Stool R/M</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Sputum</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Mantoux</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>CRP</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>PSA</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Trop-I</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>CPK-MB</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Iron Profile</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>Body Panel Full</label>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>X-Ray</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>USG</label>
+                                <label class="flex items-center"><span class="print-checkbox mr-0.5"></span>ECG</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CONSULTANTS LIST (Polished) -->
+                    <div class="mt-auto border-t-2 border-orange-200 pt-2 mb-1">
+                        <div class="sidebar-header text-[16px]" style="margin-top: 0;">OUR CONSULTANTS</div>
+                        <table class="consultant-table mt-1" contenteditable="true">
+                            <tr><td class="doc-name">Dr. Ashish Chaudhary</td><td class="doc-spec">Family Physician</td></tr>
+                            <tr><td class="doc-name">Dr. Ruchi Chaudhary</td><td class="doc-spec">Gynae & Obs</td></tr>
+                            <tr><td class="doc-name">Dr. Shrikant Khake</td><td class="doc-spec">Internal Medicine</td></tr>
+                            <tr><td class="doc-name">Dr. Mukesh Sehrawat</td><td class="doc-spec">Gen. & Lap. Surgeon</td></tr>
+                            <tr><td class="doc-name">Dr. Manoj Chauhan</td><td class="doc-spec">General Surgeon</td></tr>
+                            <tr><td class="doc-name">Dr. Neetu Singh</td><td class="doc-spec">Gynae. Surgeon</td></tr>
+                            <tr><td class="doc-name">Dr. Bhupender Saini</td><td class="doc-spec">Proctologist</td></tr>
+                            <tr><td class="doc-name">Dr. Bhavesh Mittal</td><td class="doc-spec">Physiotherapist</td></tr>
+                        </table>
+                    </div>
+
                 </div>
-                <div class="col-span-4 flex items-end">
-                    <span class="whitespace-nowrap mr-2">UHID:</span>
-                    <div class="dotted-line w-full" contenteditable="true"></div>
+
+                <!-- Right Area: Diagnosis & Prescription -->
+                <div class="main-rx">
+                    
+                    <!-- Diagnosis Section -->
+                    <div class="mb-2 flex gap-3 items-start">
+                        
+                        <!-- Rx Symbol -->
+                        <div class="rx-symbol pt-0 text-3xl">Rx</div>
+
+                        <div class="flex-grow flex gap-2">
+                            <div class="w-[35%]">
+                                <h3 class="font-bold text-xs text-black mb-0.5">CHIEF COMPLAINTS</h3>
+                                <div class="dotted-line w-full" contenteditable="true"></div>
+                                <div class="dotted-line w-full mt-0.5" contenteditable="true"></div>
+                            </div>
+                            <div class="w-[35%]">
+                                <h3 class="font-bold text-xs text-black mb-0.5">DIAGNOSIS (Pro.)</h3>
+                                <div class="dotted-line w-full" contenteditable="true"></div>
+                                <div class="dotted-line w-full mt-0.5" contenteditable="true"></div>
+                            </div>
+                            <!-- ALLERGY ALERT -->
+                            <div class="w-[30%] border border-red-500 bg-red-50 p-1 rounded h-fit mt-0">
+                                <div class="text-[9px] font-extrabold text-red-700 mb-0 leading-none">ALLERGY ALERT:</div>
+                                <div class="h-4 border-b border-red-500" contenteditable="true"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Note Gap + Vitals Column -->
+                    <div class="flex gap-2 mb-2">
+                        <!-- Note Gap (Left Side) -->
+                        <div style="height: 1in;" class="w-[70%] relative pl-2 border-l-2 border-dotted border-gray-300" contenteditable="true">
+                            <!-- Space for notes -->
+                        </div>
+                        
+                        <!-- Vitals Column (Right Side under Allergy Alert) -->
+                        <div class="w-[30%] text-[9px] text-black font-bold flex flex-col gap-1 pr-1">
+                            <div class="flex justify-between items-end border-b border-gray-300 pb-0.5"><span>Wt(kg):</span> <span contenteditable="true" class="w-8 text-center"></span></div>
+                            <div class="flex justify-between items-end border-b border-gray-300 pb-0.5"><span>Temp:</span> <span contenteditable="true" class="w-8 text-center"></span></div>
+                            <div class="flex justify-between items-end border-b border-gray-300 pb-0.5"><span>BP:</span> <span contenteditable="true" class="w-8 text-center"></span></div>
+                            <div class="flex justify-between items-end border-b border-gray-300 pb-0.5"><span>Pulse:</span> <span contenteditable="true" class="w-8 text-center"></span></div>
+                            <div class="flex justify-between items-end border-b border-gray-300 pb-0.5"><span>SpO2:</span> <span contenteditable="true" class="w-8 text-center"></span></div>
+                            <div class="flex justify-between items-end border-b border-gray-300 pb-0.5"><span>RBS:</span> <span contenteditable="true" class="w-8 text-center"></span></div>
+                        </div>
+                    </div>
+
+                    <!-- Medicine List Box (8 Rows) - AVOID / PERHEZ INTEGRATED -->
+                    <div class="flex-grow text-black flex flex-col">
+                        
+                        <!-- Header inside the box - Compact Columns -->
+                        <table class="med-table">
+                            <thead>
+                                <tr>
+                                    <!-- 1.5 inch wide column for Avoid List -->
+                                    <th style="width: 1.5in; border-right: 1px solid #000; padding-left: 2px; text-align: left;">AVOID / परहेज</th> 
+                                    <th style="width: auto; text-align: left; padding-left: 5px;">MEDICINE NAME</th>
+                                    <!-- Compact Width -->
+                                    <th style="width: 14%;">
+                                        <div class="text-[8px] text-center font-bold">Frequency</div>
+                                        <div class="flex justify-center gap-1 px-0">
+                                            <span class="rx-header-label">M</span>
+                                            <span class="rx-header-label">A</span>
+                                            <span class="rx-header-label">E</span>
+                                            <span class="rx-header-label">N</span>
+                                        </div>
+                                    </th>
+                                    <!-- Compact Width -->
+                                    <th style="width: 10%;">
+                                        <div class="text-[8px] text-center font-bold">Days</div>
+                                        <div class="flex justify-center gap-1 px-0">
+                                            <span class="rx-header-label">3</span>
+                                            <span class="rx-header-label">5</span>
+                                            <span class="rx-header-label">7</span>
+                                            <span class="rx-header-label">10</span>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody contenteditable="true">
+                                <!-- Row 1 - Contains AVOID list spanning 8 rows -->
+                                <tr>
+                                    <td rowspan="8" class="align-top p-1 border-r border-black" style="vertical-align: top; padding: 4px;">
+                                        <div class="text-[10px] font-extrabold text-black mb-1 uppercase bg-gray-200 px-1 inline-block rounded w-full text-center">Avoid / परहेज</div>
+                                        <div class="grid grid-cols-1 gap-0.5 text-[10px] text-black font-bold leading-tight pl-1">
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Spicy (तीखा)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Oily (तैलीय)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Fried (तला हुआ)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Cold (ठंडा)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Sour (खट्टा)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Sweet (मीठा)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Rice (चावल)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Curd (दही)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Pickle (अचार)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Ghee/Butter</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Salt (नमक)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Potato (आलू)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Sweet Fruits</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Tea (चाय)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Wheat Roti</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Milk (दूध)</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Smoking/Alc.</div>
+                                            <div class="flex items-center"><span class="print-checkbox mr-1" style="width: 10px; height: 10px;"></span>Outside Food</div>
+                                        </div>
+                                    </td>
+                                    <td class="med-name-cell"><span class="med-number">1.</span> </td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <!-- 1st cell skipped due to rowspan -->
+                                    <td class="med-name-cell"><span class="med-number">2.</span> </td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <!-- 1st cell skipped due to rowspan -->
+                                    <td class="med-name-cell"><span class="med-number">3.</span> </td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <!-- 1st cell skipped due to rowspan -->
+                                    <td class="med-name-cell"><span class="med-number">4.</span> </td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <!-- 1st cell skipped due to rowspan -->
+                                    <td class="med-name-cell"><span class="med-number">5.</span> </td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <!-- 1st cell skipped due to rowspan -->
+                                    <td class="med-name-cell"><span class="med-number">6.</span> </td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <!-- 1st cell skipped due to rowspan -->
+                                    <td class="med-name-cell"><span class="med-number">7.</span> </td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <!-- 1st cell skipped due to rowspan -->
+                                    <td class="med-name-cell"><span class="med-number">8.</span> </td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                    <td><div class="flex justify-center gap-1"><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span><span class="tick-box"></span></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                     <!-- Bed Rest (Full Line) -->
+                     <div class="mt-2 border-t border-black pt-2 flex flex-col gap-1 text-sm text-black">
+                        <span class="font-bold uppercase text-xs">Bed Rest:</span>
+                        <div class="solid-line" contenteditable="true"></div>
+                    </div>
+
                 </div>
             </div>
-        </section>
 
-        <!-- 3. Main Content Grid -->
-        <div class="content-grid">
-            
-            <!-- Left Sidebar -->
-            <div class="sidebar">
-                
-                <!-- Clinical Vitals -->
-                <div>
-                    <div class="sidebar-header">VITALS</div>
-                    <div class="grid grid-cols-2 gap-x-2 gap-y-0.5 text-black font-bold text-[10px]">
-                        <div class="flex justify-between items-end"><span>Wt(kg):</span> <span class="border-b border-black w-6" contenteditable="true"></span></div>
-                        <div class="flex justify-between items-end"><span>Temp:</span> <span class="border-b border-black w-6" contenteditable="true"></span></div>
-                        <div class="flex justify-between items-end"><span>BP:</span> <span class="border-b border-black w-6" contenteditable="true"></span></div>
-                        <div class="flex justify-between items-end"><span>Pulse:</span> <span class="border-b border-black w-6" contenteditable="true"></span></div>
-                        <div class="flex justify-between items-end"><span>SpO2:</span> <span class="border-b border-black w-6" contenteditable="true"></span></div>
-                        <div class="flex justify-between items-end"><span>RBS:</span> <span class="border-b border-black w-6" contenteditable="true"></span></div>
+            <!-- 5. Footer (Updated with Advice in Center) -->
+            <footer class="footer">
+                <div class="flex justify-between items-end">
+                    <!-- Left: Next Visit -->
+                    <div class="text-[10px] w-1/4">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="font-bold text-black whitespace-nowrap">Next Visit:</span>
+                            <div class="border-b border-dotted border-black w-20 h-4 text-center" contenteditable="true"></div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- General Exam (O/E) -->
-                <div>
-                    <div class="sidebar-header">GEN. EXAM (O/E)</div>
-                    <div class="grid grid-cols-2 gap-0.5 text-[9px] text-black font-bold">
-                        <div class="flex items-center"><span class="print-checkbox"></span> Pallor</div>
-                        <div class="flex items-center"><span class="print-checkbox"></span> Icterus</div>
-                        <div class="flex items-center"><span class="print-checkbox"></span> Cyanosis</div>
-                        <div class="flex items-center"><span class="print-checkbox"></span> Clubbing</div>
-                        <div class="flex items-center"><span class="print-checkbox"></span> Edema</div>
-                        <div class="flex items-center"><span class="print-checkbox"></span> Dehydrn.</div>
-                        <div class="flex items-center"><span class="print-checkbox"></span> Throat</div>
-                        <div class="flex items-center"><span class="print-checkbox"></span> Teeth</div>
-                        <div class="flex items-center"><span class="print-checkbox"></span> Neck</div>
-                        <div class="flex items-center"><span class="print-checkbox"></span> Eyes</div>
+                    <!-- Center: Advice (New) -->
+                    <div class="text-center w-1/2 px-1">
+                        <p class="font-bold text-[9px] uppercase border-b border-gray-400 mb-1">ADVICE / INSTRUCTIONS</p>
+                        <div class="text-[8px] font-bold leading-snug text-black">
+                            <span>Drink plenty of water / खूब पानी पिएं</span> •
+                            <span>Take bland diet / हल्का भोजन लें</span><br>
+                            <span>Take medicines timely / दवा समय पर लें</span>
+                        </div>
                     </div>
-                </div>
-
-                 <!-- Systemic Exam (S/E) -->
-                 <div>
-                    <div class="sidebar-header">SYS. EXAM (S/E)</div>
-                    <div class="space-y-0.5 text-[10px] text-black font-bold">
-                        <div class="flex justify-between items-end"><span>Chest:</span> <span class="border-b border-black w-12" contenteditable="true"></span></div>
-                        <div class="flex justify-between items-end"><span>CVS:</span> <span class="border-b border-black w-12" contenteditable="true"></span></div>
-                        <div class="flex justify-between items-end"><span>P/A:</span> <span class="border-b border-black w-12" contenteditable="true"></span></div>
-                        <div class="flex justify-between items-end"><span>CNS:</span> <span class="border-b border-black w-12" contenteditable="true"></span></div>
-                    </div>
-                </div>
-
-                <!-- History -->
-                <div>
-                    <div class="sidebar-header">HISTORY</div>
-                    <div class="space-y-1">
-                        <div class="text-[9px] text-black font-bold">Past / Surgical / Family:</div>
-                        <div class="h-4 w-full border-b border-black" contenteditable="true"></div>
-                        <div class="text-[9px] text-black font-bold mt-0.5">Personal (Smoking/Alcohol):</div>
-                        <div class="h-4 w-full border-b border-black" contenteditable="true"></div>
-                    </div>
-                </div>
-
-                <!-- Investigations - Detailed -->
-                <div>
-                    <div class="sidebar-header">INVESTIGATIONS</div>
-                    <div class="text-[9px] text-black font-bold grid grid-cols-1 gap-0.5 pl-0.5">
-                        <div class="flex items-center"><span class="print-checkbox mr-1"></span> CBC / Hb / ESR / Platelet</div>
-                        <div class="flex items-center"><span class="print-checkbox mr-1"></span> RBS / HbA1c</div>
-                        <div class="flex items-center"><span class="print-checkbox mr-1"></span> Urea / Creatinine / Uric Acid</div>
-                        <div class="flex items-center"><span class="print-checkbox mr-1"></span> SGOT / SGPT / Bilirubin</div>
-                        <div class="flex items-center"><span class="print-checkbox mr-1"></span> Lipid Profile / Alk. Phos</div>
-                        <div class="flex items-center"><span class="print-checkbox mr-1"></span> Thyroid (TSH/T3/T4)</div>
-                        <div class="flex items-center"><span class="print-checkbox mr-1"></span> S. Electrolytes (Na/K/Ca)</div>
-                        <div class="flex items-center"><span class="print-checkbox mr-1"></span> HIV / HCV / HBsAg</div>
-                        <div class="flex items-center"><span class="print-checkbox mr-1"></span> Widal / Malaria / Dengue</div>
-                        <div class="flex items-center"><span class="print-checkbox mr-1"></span> Urine R/M / Stool R/M</div>
-                        <div class="flex items-center"><span class="print-checkbox mr-1"></span> X-Ray / USG / ECG</div>
-                    </div>
-                </div>
-
-                <!-- Allergy Warning -->
-                <div class="mt-1 border border-red-500 bg-red-50 p-0.5 rounded">
-                    <div class="text-[9px] font-extrabold text-red-700 mb-0">ALLERGY ALERT:</div>
-                    <div class="h-3 border-b border-red-500" contenteditable="true"></div>
-                </div>
-
-                <!-- Advice / Instructions + Parhej -->
-                <div class="mt-1 border-t-2 border-orange-200 pt-1">
-                    <div class="sidebar-header">ADVICE / INSTRUCTIONS</div>
-                    <ul class="list-disc pl-4 space-y-0.5 text-[9px] text-black font-bold leading-tight">
-                        <li contenteditable="true">Drink plenty of water / खूब पानी पिएं</li>
-                        <li contenteditable="true">Take bland diet / हल्का भोजन लें</li>
-                        <li contenteditable="true">Take medicines timely / दवा समय पर लें</li>
-                    </ul>
                     
-                    <!-- Dietary Restrictions Checklist -->
-                    <div class="mt-1 border-t border-dotted border-gray-400 pt-1">
-                        <div class="text-[9px] font-extrabold text-black mb-1 uppercase">Avoid / परहेज:</div>
-                        <div class="grid grid-cols-2 gap-0.5 text-[8px] text-black font-bold">
-                            <div class="flex items-center"><span class="print-checkbox"></span> Spicy (तीखा)</div>
-                            <div class="flex items-center"><span class="print-checkbox"></span> Oily (तलीय)</div>
-                            <div class="flex items-center"><span class="print-checkbox"></span> Fried (तला हुआ)</div>
-                            <div class="flex items-center"><span class="print-checkbox"></span> Cold (ठंडा)</div>
-                            <div class="flex items-center"><span class="print-checkbox"></span> Sour (खट्टा)</div>
-                            <div class="flex items-center"><span class="print-checkbox"></span> Sweets (मीठा)</div>
-                            <div class="flex items-center"><span class="print-checkbox"></span> Rice (चावल)</div>
-                            <div class="flex items-center"><span class="print-checkbox"></span> Curd (दही)</div>
-                            <div class="flex items-center"><span class="print-checkbox"></span> Pickle (अचार)</div>
-                            <div class="flex items-center"><span class="print-checkbox"></span> Ghee/Butter</div>
-                            <div class="flex items-center"><span class="print-checkbox"></span> Smoking/Alc.</div>
-                            <div class="flex items-center"><span class="print-checkbox"></span> Outside Food</div>
-                        </div>
+                    <!-- Right: Signature -->
+                    <div class="text-center w-1/4">
+                        <div class="h-4 w-32 mx-auto"></div>
+                        <p class="font-bold text-blue-900 border-t border-black px-4 pt-1 text-[10px]">Signature / Consultant</p>
                     </div>
                 </div>
 
-            </div>
-
-            <!-- Right Area: Diagnosis & Prescription -->
-            <div class="main-rx">
-                
-                <!-- Diagnosis Section -->
-                <div class="mb-2 flex gap-3 items-start">
-                    
-                    <!-- Rx Symbol -->
-                    <div class="rx-symbol pt-0 text-3xl">Rx</div>
-
-                    <div class="flex-grow flex gap-4">
-                        <div class="w-1/2">
-                            <h3 class="font-bold text-xs text-black mb-0.5">CHIEF COMPLAINTS (C/O)</h3>
-                            <div class="dotted-line w-full" contenteditable="true"></div>
-                            <div class="dotted-line w-full mt-0.5" contenteditable="true"></div>
-                        </div>
-                        <div class="w-1/2">
-                            <h3 class="font-bold text-xs text-black mb-0.5">DIAGNOSIS (Provisional)</h3>
-                            <div class="dotted-line w-full" contenteditable="true"></div>
-                            <div class="dotted-line w-full mt-0.5" contenteditable="true"></div>
-                        </div>
-                    </div>
+                <div class="mt-1 flex justify-between items-center text-[9px] text-black uppercase font-bold border-t border-black pt-1">
+                    <span contenteditable="true"><i class="fas fa-clock text-orange-600"></i> OPD: 10 AM-2 PM | 6 PM-8 PM</span>
+                    <span class="text-red-700 text-[8px] tracking-wide">Not for Medico-Legal Purpose</span>
+                    <span class="flex items-center gap-1">
+                        Emergency: 
+                        <span class="emergency-box" contenteditable="true"><i class="fas fa-phone-alt"></i> 9068572275</span>
+                    </span>
                 </div>
+            </footer>
 
-                <!-- SPACER for Notes -->
-                <div class="h-10 w-full border-l-2 border-dotted border-black mb-1 relative pl-2" contenteditable="true">
-                    <span class="absolute top-2 left-2 text-gray-500 text-[10px] italic pointer-events-none no-print">Space for Notes...</span>
-                </div>
-
-                <!-- Medicine List Box -->
-                <div class="flex-grow text-black flex flex-col">
-                    
-                    <!-- Header inside the box -->
-                    <div class="rx-table-header">
-                        <span class="w-[60%] pl-2">Medicine Name</span>
-                        <span class="w-[22%] text-center">Frequency</span>
-                        <span class="w-[18%] text-right pr-2">Days</span>
-                    </div>
-
-                    <div class="rx-box">
-                        <div class="space-y-0" contenteditable="true">
-                            <!-- 8 Rows -->
-                            <div class="rx-row">
-                                <div class="rx-col-1">1. </div>
-                                <div class="rx-col-2"><span class="dose-group"><span class="dose-option">M</span><span class="dose-option">A</span><span class="dose-option">E</span><span class="dose-option">N</span></span></div>
-                                <div class="rx-col-3"><span class="dose-group"><span class="duration-option">3</span><span class="duration-option">5</span><span class="duration-option">7</span><span class="duration-option">10</span><span class="duration-option">15</span></span></div>
-                            </div>
-                            <div class="rx-row">
-                                <div class="rx-col-1">2. </div>
-                                <div class="rx-col-2"><span class="dose-group"><span class="dose-option">M</span><span class="dose-option">A</span><span class="dose-option">E</span><span class="dose-option">N</span></span></div>
-                                <div class="rx-col-3"><span class="dose-group"><span class="duration-option">3</span><span class="duration-option">5</span><span class="duration-option">7</span><span class="duration-option">10</span><span class="duration-option">15</span></span></div>
-                            </div>
-                            <div class="rx-row">
-                                <div class="rx-col-1">3. </div>
-                                <div class="rx-col-2"><span class="dose-group"><span class="dose-option">M</span><span class="dose-option">A</span><span class="dose-option">E</span><span class="dose-option">N</span></span></div>
-                                <div class="rx-col-3"><span class="dose-group"><span class="duration-option">3</span><span class="duration-option">5</span><span class="duration-option">7</span><span class="duration-option">10</span><span class="duration-option">15</span></span></div>
-                            </div>
-                            <div class="rx-row">
-                                <div class="rx-col-1">4. </div>
-                                <div class="rx-col-2"><span class="dose-group"><span class="dose-option">M</span><span class="dose-option">A</span><span class="dose-option">E</span><span class="dose-option">N</span></span></div>
-                                <div class="rx-col-3"><span class="dose-group"><span class="duration-option">3</span><span class="duration-option">5</span><span class="duration-option">7</span><span class="duration-option">10</span><span class="duration-option">15</span></span></div>
-                            </div>
-                            <div class="rx-row">
-                                <div class="rx-col-1">5. </div>
-                                <div class="rx-col-2"><span class="dose-group"><span class="dose-option">M</span><span class="dose-option">A</span><span class="dose-option">E</span><span class="dose-option">N</span></span></div>
-                                <div class="rx-col-3"><span class="dose-group"><span class="duration-option">3</span><span class="duration-option">5</span><span class="duration-option">7</span><span class="duration-option">10</span><span class="duration-option">15</span></span></div>
-                            </div>
-                            <div class="rx-row">
-                                <div class="rx-col-1">6. </div>
-                                <div class="rx-col-2"><span class="dose-group"><span class="dose-option">M</span><span class="dose-option">A</span><span class="dose-option">E</span><span class="dose-option">N</span></span></div>
-                                <div class="rx-col-3"><span class="dose-group"><span class="duration-option">3</span><span class="duration-option">5</span><span class="duration-option">7</span><span class="duration-option">10</span><span class="duration-option">15</span></span></div>
-                            </div>
-                            <div class="rx-row">
-                                <div class="rx-col-1">7. </div>
-                                <div class="rx-col-2"><span class="dose-group"><span class="dose-option">M</span><span class="dose-option">A</span><span class="dose-option">E</span><span class="dose-option">N</span></span></div>
-                                <div class="rx-col-3"><span class="dose-group"><span class="duration-option">3</span><span class="duration-option">5</span><span class="duration-option">7</span><span class="duration-option">10</span><span class="duration-option">15</span></span></div>
-                            </div>
-                            <div class="rx-row">
-                                <div class="rx-col-1">8. </div>
-                                <div class="rx-col-2"><span class="dose-group"><span class="dose-option">M</span><span class="dose-option">A</span><span class="dose-option">E</span><span class="dose-option">N</span></span></div>
-                                <div class="rx-col-3"><span class="dose-group"><span class="duration-option">3</span><span class="duration-option">5</span><span class="duration-option">7</span><span class="duration-option">10</span><span class="duration-option">15</span></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                 <!-- Bed Rest (Full Line) -->
-                 <div class="mt-2 border-t border-black pt-2 flex flex-col gap-1 text-sm text-black">
-                    <span class="font-bold uppercase text-xs">Bed Rest & Advice:</span>
-                    <div class="solid-line" contenteditable="true"></div>
-                </div>
-
-            </div>
         </div>
-
-        <!-- 5. Footer -->
-        <footer class="footer">
-            <div class="flex justify-between items-end">
-                <div class="text-[10px]">
-                    <div class="flex items-center gap-2 mb-1">
-                        <span class="font-bold text-black">Next Visit:</span>
-                        <div class="border-b border-dotted border-black w-32 h-4 text-center" contenteditable="true"></div>
-                    </div>
-                </div>
-                
-                <div class="text-center">
-                    <div class="h-4 w-32 mx-auto"></div>
-                    <p class="font-bold text-blue-900 border-t border-black px-4 pt-1 text-[10px]">Signature / Consultant</p>
-                </div>
-            </div>
-
-            <div class="mt-1 flex justify-between items-center text-[9px] text-black uppercase font-bold border-t border-black pt-1">
-                <span contenteditable="true"><i class="fas fa-clock text-orange-600"></i> OPD: 10 AM-2 PM | 6 PM-8 PM</span>
-                <span class="text-red-700 text-[8px] tracking-wide">Not for Medico-Legal Purpose</span>
-                <span class="flex items-center gap-1">
-                    Emergency: 
-                    <span class="emergency-box text-[9px]" contenteditable="true"><i class="fas fa-phone-alt"></i> 9068572275</span>
-                </span>
-            </div>
-        </footer>
-
     </div>
 
-    <script>
-        const dateElement = document.getElementById('currentDate');
-        const today = new Date();
-        const options = { year: 'numeric', month: 'short', day: 'numeric' };
-        dateElement.innerText = today.toLocaleDateString('en-IN', options);
-    </script>
+    <!-- Script removed to keep date manual -->
 </body>
 </html>
